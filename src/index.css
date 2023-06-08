@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+:root {
+  --text-primary: #fff;
+  --text-secondary: #bdbdbd;
+  --accent: #46f17f;
+  --background: #111827;
+}
+
+html {
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+body {
+  /* border: 1px solid white; */
+}
