@@ -12,8 +12,9 @@
 :root {
   --text-primary: #fff;
   --text-secondary: #bdbdbd;
-  --accent: #46f17f;
+  --accent: #485bff;
   --background: #111827;
+  --btn-accent-hover: #485aff9a;
 }
 
 html {
