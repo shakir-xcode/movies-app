@@ -1,7 +1,7 @@
 import React from "react";
 import bgImage from "../assets/4.jpg";
 import { BsFillPlayFill } from "react-icons/bs";
-import { AiFillInfoCircle } from "react-icons/ai";
+import { MdFavoriteBorder } from "react-icons/md";
 
 function HeroSection({ movieBg }) {
   return (
@@ -25,8 +25,8 @@ function HeroSection({ movieBg }) {
             <BsFillPlayFill size={24} /> Play
           </button>
           <button className="px-4 py-1 bg-white text-accent rounded font-bold flex justify-center items-center gap-2 hover:bg-slate-100/80">
-            <AiFillInfoCircle size={20} className="text-accent" />
-            More Info
+            <MdFavoriteBorder size={20} />
+            Favorites
           </button>
         </div>
       </div>
