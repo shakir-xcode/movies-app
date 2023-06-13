@@ -1,14 +1,18 @@
 import React from "react";
 import { movies } from "./movies";
-import AllMovies from "./components/AllMovies";
+import PopularMovies from "./components/PopularMovies";
 import Favorites from "./components/Favorites";
 import HeroSection from "./components/HeroSection";
+import TopRatedMovies from "./components/TopRatedMovies";
+import UpcomingMovies from "./components/UpcomingMovies";
 
 function App() {
   return (
     <div className="max-w-[1440px] mx-auto ">
       <HeroSection />
-      <AllMovies movies={movies} />
+      <PopularMovies popular={movies} />
+      <TopRatedMovies topRated={movies} />
+      <UpcomingMovies upComing={movies} />
       <Favorites />
     </div>
   );
