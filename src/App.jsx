@@ -5,10 +5,12 @@ import Favorites from "./components/Favorites";
 import HeroSection from "./components/HeroSection";
 import TopRatedMovies from "./components/TopRatedMovies";
 import UpcomingMovies from "./components/UpcomingMovies";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="max-w-[1440px] mx-auto ">
+    <div className=" max-w-[1440px] mx-auto ">
+      <Navbar />
       <HeroSection />
       <PopularMovies popular={movies} />
       <TopRatedMovies topRated={movies} />
