@@ -1,7 +1,5 @@
 /* 
-1. reduxToolkit
-2. react scroll
-3. change logo
-
+1. change logo
+2. git push
 
 */
