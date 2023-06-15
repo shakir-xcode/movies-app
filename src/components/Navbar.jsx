@@ -4,7 +4,7 @@ import SearchBox from "./SearchBox";
 function Navbar() {
   return (
     <div
-      className="fixed z-10 w-full px-5 mt-4 md:px-14
+      className="fixed z-40 w-full px-5 mt-4 md:px-14
     lg:px-24  flex justify-between items-center flex-wrap"
     >
       <div>

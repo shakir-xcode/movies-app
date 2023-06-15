@@ -9,7 +9,6 @@ function SearchBox() {
   };
   return (
     <div
-      data-searchContainer="searchBox"
       className=" flex items-center rounded-2xl px-2 py-1 
       overflow-hidden border border-slate-500 
       focus-within:border-slate-200 "

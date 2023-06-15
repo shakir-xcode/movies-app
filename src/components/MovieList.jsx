@@ -9,8 +9,8 @@ function MovieList({ movies, genre }) {
         className=" overflow-x-scroll overflow-y-visible whitespace-nowrap 
     scrollbar-hide scroll-smooth py-1 "
       >
-        {movies.map((movie) => (
-          <MovieCard movie={movie} />
+        {movies.map((movie, index) => (
+          <MovieCard key={index} movie={movie} />
         ))}
       </div>
     </div>
