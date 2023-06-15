@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { CgInfo } from "react-icons/cg";
-import { BsFillPlayFill } from "react-icons/bs";
 import { MdFavoriteBorder } from "react-icons/md";
+import Navbar from "./Navbar";
 
 function HeroSection({ movie }) {
   const truncStr = (str = "overview", len = 150) => {
@@ -10,7 +11,8 @@ function HeroSection({ movie }) {
   };
 
   return (
-    <div className="relative h-[550px] ">
+    <div className=" relative h-[550px]">
+      <Navbar />
       <div className="absolute w-full h-full bg-gradient-to-b from-black/90 z-10"></div>
       <div className="absolute w-full h-full  ">
         <img
@@ -25,9 +27,11 @@ function HeroSection({ movie }) {
         </h1>
         <p className=" mt-2">{truncStr(movie?.overview)}</p>
         <div className="flex flex-wrap gap-3 mt-6">
-          <button className="px-4 py-[0.4rem] bg-accent rounded flex justify-center items-center gap-1 font-bold hover:bg-btn.accent-hover">
-            <CgInfo size={24} /> Info
-          </button>
+          <Link to="info">
+            <button className="px-4 py-[0.4rem] bg-accent rounded flex justify-center items-center gap-1 font-bold hover:bg-btn.accent-hover">
+              <CgInfo size={24} /> Info
+            </button>
+          </Link>
           <button className="px-4 py-1 bg-white text-accent rounded font-bold flex justify-center items-center gap-2 hover:bg-slate-100/80">
             <MdFavoriteBorder size={20} />
             Favorites
