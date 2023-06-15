@@ -10,7 +10,7 @@ function SearchBox() {
   return (
     <div
       className=" flex items-center rounded-2xl px-2 py-1 
-      overflow-hidden border border-slate-500 
+      overflow-hidden border border-slate-200 
       focus-within:border-slate-200 "
     >
       <input
@@ -20,7 +20,7 @@ function SearchBox() {
         placeholder="search..."
         className="w-[8ch] text-primary-color bg-transparent focus:outline-0 px-1 "
       />
-      <BsSearch size={16} className="text-accent" />
+      <BsSearch size={16} className="text-white" />
     </div>
   );
 }

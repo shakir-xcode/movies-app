@@ -1,5 +1,5 @@
 import React from "react";
-import bgImage from "../assets/4.jpg";
+import { CgInfo } from "react-icons/cg";
 import { BsFillPlayFill } from "react-icons/bs";
 import { MdFavoriteBorder } from "react-icons/md";
 
@@ -11,7 +11,7 @@ function HeroSection({ movie }) {
 
   return (
     <div className="relative h-[550px] ">
-      <div className="absolute w-full h-full bg-gradient-to-r from-black z-10"></div>
+      <div className="absolute w-full h-full bg-gradient-to-b from-black/90 z-10"></div>
       <div className="absolute w-full h-full  ">
         <img
           src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
@@ -26,7 +26,7 @@ function HeroSection({ movie }) {
         <p className=" mt-2">{truncStr(movie?.overview)}</p>
         <div className="flex flex-wrap gap-3 mt-6">
           <button className="px-4 py-[0.4rem] bg-accent rounded flex justify-center items-center gap-1 font-bold hover:bg-btn.accent-hover">
-            <BsFillPlayFill size={24} /> Play
+            <CgInfo size={24} /> Info
           </button>
           <button className="px-4 py-1 bg-white text-accent rounded font-bold flex justify-center items-center gap-2 hover:bg-slate-100/80">
             <MdFavoriteBorder size={20} />

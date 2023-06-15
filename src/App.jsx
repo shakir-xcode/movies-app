@@ -32,18 +32,7 @@ function App() {
     return axios.get(upcomingApi);
   }
 
-  // const getAllMovies = async () => {
-  //   await getPopularMovies().then((res) => setMovis(res.data.results));
-  //   await getTopRatedMovies()
-  //     .then((res) => console.log("topRated = ", res.data.results))
-  //     .catch((err) => console.log("Error = ", err));
-
-  //   await getUpcomingMovies()
-  //     .then((res) => console.log("upComing = ", res.data.results))
-  //     .catch((err) => console.log("Error + ", err));
-  // };
   useEffect(() => {
-    // axios.get(popularMovies).then((res) => setMovis(res.data.results));
     Promise.all([getPopularMovies(), getTopRatedMovies(), getUpcomingMovies()])
       .then((allMovies) => {
         setPopularMovies(allMovies[0].data.results);
