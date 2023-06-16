@@ -1,37 +1,43 @@
 import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
-import imag from "../assets/4.jpg";
+import { MdFavoriteBorder } from "react-icons/md";
+import { useLocation } from "react-router-dom";
 
-function MovieInfo(props) {
-  // const { title, overview, bgImage, release_date, vote_average } = props.movie;
+function MovieInfo() {
+  const location = useLocation();
+  const movie = location.state;
   return (
     <div className="">
       <div className=" relative h-[550px]">
-        <img src={imag} alt="imge" className="w-full h-full object-cover" />
+        <img
+          src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+          alt={movie?.title}
+          className="w-full h-full object-cover"
+        />
       </div>
-      <div className="p-3 max-w-3xl mx-auto">
+      <div className="p-3 max-w-3xl mx-auto my-4">
         <h1 className="text-3xl md:text-5xl font-bold mt-4 text-center">
-          movie title
+          {movie?.title}
         </h1>
         <p className="font-bold text-xl mt-4">Overview</p>
-        <p className="mt-1">
-          France is in turmoil and a new, naive King finds himself manipulated
-          by the evil Cardinal Richelieu. With a corrupt commander of the royal
-          guard by his side the Cardinal employs the expertise of the devious
-          and wicked Milady de Winter in a plot to bring down the monarchy and
-          drag the country into war. As France burns the Cardinal will take
-          control. All that stands between them and victory are the remnants of
-          an elite group who wore loyalty to crown and country. Above all else
-          The Musketeers will stand against the odds to foil this deadly plot.
-        </p>
+        <p className="mt-1">{movie?.overview}</p>
         <div className="mt-4 flex flex-wrap gap-10 items-center justify-between">
           <p className=" ">
-            <span className="font-bold">Release Date:</span> 10-12-2023
+            <span className="font-bold">Release Date: </span>
+            {movie?.release_date}
           </p>
           <p className=" flex gap-3  ">
             <FaThumbsUp size={24} />{" "}
-            <span className=" font-bold mt-1">5.3 Rating</span>
+            <span className=" font-bold mt-1">
+              {movie?.vote_average} Rating
+            </span>
           </p>
+          <div className="flex gap-2">
+            <button>
+              <MdFavoriteBorder size={20} />
+            </button>
+            <p className="font-bold">Add to Favorites</p>
+          </div>
         </div>
       </div>
     </div>

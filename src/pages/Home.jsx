@@ -19,6 +19,7 @@ function Home() {
     popularMovies[Math.floor(Math.random() * popularMovies.length)];
 
   console.log(heroSectionMovie);
+
   function getPopularMovies() {
     return axios.get(popularApi);
   }

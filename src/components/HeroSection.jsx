@@ -27,15 +27,17 @@ function HeroSection({ movie }) {
         </h1>
         <p className=" mt-2">{truncStr(movie?.overview)}</p>
         <div className="flex flex-wrap gap-3 mt-6">
-          <Link to="info">
+          <Link to="info" state={movie}>
             <button className="px-4 py-[0.4rem] bg-accent rounded flex justify-center items-center gap-1 font-bold hover:bg-btn.accent-hover">
               <CgInfo size={24} /> Info
             </button>
           </Link>
-          <button className="px-4 py-1 bg-white text-accent rounded font-bold flex justify-center items-center gap-2 hover:bg-slate-100/80">
-            <MdFavoriteBorder size={20} />
-            Favorites
-          </button>
+          <Link to="favorite">
+            <button className="px-4 py-1 bg-white text-accent rounded font-bold flex justify-center items-center gap-2 hover:bg-slate-100/80">
+              <MdFavoriteBorder size={20} />
+              Favorites
+            </button>
+          </Link>
         </div>
       </div>
     </div>
