@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Favorites from "./pages/Favorites";
 import MovieInfo from "./pages/MovieInfo";
+import MovieSearch from "./pages/MovieSearch";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/favorite" element={<Favorites />} />
           <Route path="/info" element={<MovieInfo />} />
+          <Route path="/search" element={<MovieSearch />} />
         </Routes>
       </div>
     </BrowserRouter>

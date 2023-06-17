@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import Poster from "../assets/4.jpg";
 
-function MovieCard({ movie, liked = false }) {
-  const likeIt = () => {};
+function MovieCard({ movie, liked = false, likeIt }) {
+  // const likeIt = () => {};
 
   return (
-    <Link to="info" state={movie}>
+    <Link to="/info" state={movie}>
       <div
-        className="relative w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] 
+        className="relative w-[160px] h-full sm:w-[200px] md:w-[240px] lg:w-[280px] 
     inline-block mx-[0.15rem] cursor-pointer  "
       >
         <img
@@ -21,7 +21,10 @@ function MovieCard({ movie, liked = false }) {
           <p className="flex flex-col gap-3 justify-center items-center h-full  ">
             {movie.title}
           </p>
-          <p onClick={likeIt} className="absolute top-4 left-4">
+          <p
+            onClick={() => likeIt(movie?.id, movie?.title)}
+            className="absolute top-4 left-4"
+          >
             {liked ? <FaHeart /> : <FaRegHeart />}
           </p>
         </div>

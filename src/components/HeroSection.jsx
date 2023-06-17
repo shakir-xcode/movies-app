@@ -33,7 +33,7 @@ function HeroSection({ movie }) {
             </button>
           </Link>
           <Link to="favorite">
-            <button className="px-4 py-1 bg-white text-accent rounded font-bold flex justify-center items-center gap-2 hover:bg-slate-100/80">
+            <button className="px-4 py-[0.4rem] bg-white text-accent rounded font-bold flex justify-center items-center gap-2 hover:bg-slate-100/80">
               <MdFavoriteBorder size={20} />
               Favorites
             </button>
