@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PopularMovies from "../components/PopularMovies";
 import HeroSection from "../components/HeroSection";
 import TopRatedMovies from "../components/TopRatedMovies";
 import UpcomingMovies from "../components/UpcomingMovies";
 import request from "../requests";
 import axios from "axios";
+import { FavIDContext } from "../App";
 
 function Home() {
+  const favoriteMovies = useContext(FavIDContext);
+
   const [popularMovies, setPopularMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -18,7 +21,7 @@ function Home() {
   const heroSectionMovie =
     popularMovies[Math.floor(Math.random() * popularMovies.length)];
 
-  console.log(heroSectionMovie);
+  const isFavorite = favoriteMovies.includes(heroSectionMovie?.id || -1);
 
   function getPopularMovies() {
     return axios.get(popularApi);
@@ -44,7 +47,7 @@ function Home() {
 
   return (
     <div>
-      <HeroSection movie={heroSectionMovie} />
+      <HeroSection movie={heroSectionMovie} isFavorite={isFavorite} />
       <PopularMovies popular={popularMovies} />
       <TopRatedMovies topRated={topRatedMovies} />
       <UpcomingMovies upComing={upcomingMovies} />

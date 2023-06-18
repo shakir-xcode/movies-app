@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SearchBox from "../components/SearchBox";
 import axios from "axios";
 import MovieCard from "../components/MovieCard";
+import { FavIDContext } from "../App";
+import useLocalStorage from "../hooks/useLocalStorage";
 
-function MovieSearch() {
-  const [searchedMovies, setSearchedMovies] = useState("");
-  const [searchString, setSearchString] = useState("");
+const SEARCH_KEY = "MOVIE_APP_SEARCH_STRING";
+function MovieSearch({ searchMovieList, updateSearchList }) {
+  const [searchString, setSearchString] = useLocalStorage(SEARCH_KEY, "");
+
+  const favoriteIds = useContext(FavIDContext);
 
   const sortMovies = (movies) => {
     let sortedMovies = [...movies];
@@ -19,13 +23,12 @@ function MovieSearch() {
 
     axios
       .get(searchUrl)
-      .then((response) => setSearchedMovies(sortMovies(response.data.results)));
+      .then((response) => updateSearchList(sortMovies(response.data.results)));
   };
   useEffect(() => {
     findMoive(searchString);
   }, [searchString]);
 
-  // console.log(searchedMovies);
   return (
     <div className="px-2 md:px-8 ">
       <div className=" flex justify-end px-4 mt-6">
@@ -37,10 +40,16 @@ function MovieSearch() {
       <h1 className="font-bold text-2xl text-center my-5">Results</h1>
 
       <div className="flex flex-wrap justify-center">
-        {searchedMovies.length > 0
-          ? searchedMovies.map((movie, index) => (
-              <MovieCard key={index} movie={movie} liked={true} />
-            ))
+        {searchMovieList.length > 0
+          ? searchMovieList.map((movie) => {
+              return (
+                <MovieCard
+                  key={movie.id}
+                  movie={movie}
+                  liked={favoriteIds.includes(movie.id)}
+                />
+              );
+            })
           : ""}
       </div>
     </div>

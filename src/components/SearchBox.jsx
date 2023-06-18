@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 
 function SearchBox({ searchValue, setSearchValue }) {
-  const [searchString, setSearchString] = useState();
-  const handleChange = (e) => {
-    setSearchString(e.target.value);
-  };
   return (
     <div
       className=" w-fit flex items-center rounded-2xl px-2 py-1 

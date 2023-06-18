@@ -1,11 +1,18 @@
 import React from "react";
-import { FaThumbsUp } from "react-icons/fa";
+import { useContext } from "react";
+import { FaHeart, FaRegHeart, FaThumbsUp } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useLocation } from "react-router-dom";
+import { FavContext, FavIDContext } from "../App";
 
 function MovieInfo() {
   const location = useLocation();
-  const movie = location.state;
+  const handleFavortieClick = useContext(FavContext);
+  const favoriteIds = useContext(FavIDContext);
+
+  const movie = location.state.movie;
+  const isFavorite = favoriteIds.includes(movie.id);
+
   return (
     <div className="">
       <div className=" relative h-[550px]">
@@ -27,16 +34,21 @@ function MovieInfo() {
             {movie?.release_date}
           </p>
           <p className=" flex gap-3  ">
-            <FaThumbsUp size={24} />{" "}
             <span className=" font-bold mt-1">
-              {movie?.vote_average} Rating
+              Rating {movie?.vote_average}
             </span>
+            <FaThumbsUp size={24} />
           </p>
           <div className="flex gap-2">
-            <button>
-              <MdFavoriteBorder size={20} />
+            <button onClick={() => handleFavortieClick(movie)}>
+              {isFavorite ? <FaHeart /> : <FaRegHeart />}
             </button>
-            <p className="font-bold">Add to Favorites</p>
+
+            {isFavorite ? (
+              <p className="font-bold">Remove Favorite</p>
+            ) : (
+              <p className="font-bold">Add to Favorites</p>
+            )}
           </div>
         </div>
       </div>

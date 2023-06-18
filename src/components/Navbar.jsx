@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SearchBox from "./SearchBox";
 import logo from "../assets/logo.png";
 
 function Navbar() {
@@ -15,7 +14,7 @@ function Navbar() {
 
       <div>
         <Link to="search">
-          <button className="px-4 py-1 bg-accent text-md text-white font-bold  rounded-sm hover:bg-btn.accent-hover">
+          <button className="px-2 md:px-4 py-1 bg-accent  text-[0.80rem] md:text-md text-white font-bold  rounded-sm hover:bg-btn.accent-hover">
             Search Movies
           </button>
         </Link>
