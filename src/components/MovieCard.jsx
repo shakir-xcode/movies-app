@@ -18,7 +18,7 @@ function MovieCard({ movie, liked = false }) {
   return (
     <div
       className="relative w-[160px] h-full sm:w-[200px] md:w-[240px] lg:w-[280px] 
-    inline-block mx-[0.15rem] cursor-pointer  "
+    inline-block mx-[0.1em] my-[0.1em] md:mx-[0.25em] md:my-[0.25em] cursor-pointer  "
     >
       <img
         src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
@@ -27,7 +27,7 @@ function MovieCard({ movie, liked = false }) {
 
       <div
         onClick={handleClick}
-        className="card-hover101 absolute bg-black/80 top-0 left-0 bottom-0 right-0 opacity-0 hover:opacity-100 transition"
+        className=" absolute bg-black/80 top-0 left-0 bottom-0 right-0 opacity-0 hover:opacity-100 transition"
       >
         <p className="flex flex-col gap-3 justify-center items-center h-full overflow-hidden text-[0.7rem] md:text-[0.9rem] font-bold">
           {movie.title}

@@ -9,7 +9,7 @@ function MovieList({ movies, genre }) {
       <h1 className="text-lg font-medium mx-2">{genre}</h1>
       <div
         className=" overflow-x-scroll overflow-y-visible whitespace-nowrap 
-    scrollbar-hide scroll-smooth py-1 "
+    scrollbar-hide scroll-smooth py-1 mx-[0.45em]"
       >
         {movies.map((movie, index) => (
           <MovieCard

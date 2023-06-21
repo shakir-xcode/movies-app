@@ -39,7 +39,7 @@ function MovieSearch({ searchMovieList, updateSearchList }) {
       </div>
       <h1 className="font-bold text-2xl text-center my-5">Results</h1>
 
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center ">
         {searchMovieList.length > 0
           ? searchMovieList.map((movie) => {
               return (
