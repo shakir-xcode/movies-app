@@ -1,56 +1,65 @@
-import React, { useState, useEffect } from "react";
-import PopularMovies from "./components/PopularMovies";
-import Favorites from "./components/Favorites";
-import HeroSection from "./components/HeroSection";
-import TopRatedMovies from "./components/TopRatedMovies";
-import UpcomingMovies from "./components/UpcomingMovies";
-import Navbar from "./components/Navbar";
-import request from "./requests";
-import axios from "axios";
+import React from "react";
+import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Favorites from "./pages/Favorites";
+import MovieInfo from "./pages/MovieInfo";
+import MovieSearch from "./pages/MovieSearch";
+import { useState } from "react";
+
+export const FavContext = React.createContext();
+export const FavIDContext = React.createContext();
 
 function App() {
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const favoriteIds = favoriteMovies.map((movie) => movie.id);
+  const [searchedMovies, setSearchedMovies] = useState([]);
 
-  const popularApi = request.requestPopular;
-  const topRatedApi = request.requestTopRated;
-  const upcomingApi = request.requestUpcoming;
+  //enhance
+  const handleFavorites = (movie) => {
+    const newMovie = {
+      id: movie.id,
+      title: movie.title,
+      overview: movie.overview,
+      backdrop_path: movie.backdrop_path,
+      vote_average: movie.vote_average,
+      release_date: movie.release_date,
+    };
 
-  const heroSectionMovie =
-    popularMovies[Math.floor(Math.random() * popularMovies.length)];
-
-  function getPopularMovies() {
-    return axios.get(popularApi);
-  }
-
-  function getTopRatedMovies() {
-    return axios.get(topRatedApi);
-  }
-
-  function getUpcomingMovies() {
-    return axios.get(upcomingApi);
-  }
-
-  useEffect(() => {
-    Promise.all([getPopularMovies(), getTopRatedMovies(), getUpcomingMovies()])
-      .then((allMovies) => {
-        setPopularMovies(allMovies[0].data.results);
-        setTopRatedMovies(allMovies[1].data.results);
-        setUpcomingMovies(allMovies[2].data.results);
-      })
-      .catch((err) => console.log("Error = ", err));
-  }, []);
+    // check if the movie is already favorite, then remove it, otherwise add
+    if (favoriteMovies.some((m) => m.id === newMovie.id)) {
+      const newFavorites = favoriteMovies.filter((fm) => fm.id !== newMovie.id);
+      setFavoriteMovies(newFavorites);
+    } else {
+      setFavoriteMovies([...favoriteMovies, newMovie]);
+    }
+  };
 
   return (
-    <div className=" max-w-[1440px] mx-auto ">
-      <Navbar />
-      <HeroSection movie={heroSectionMovie} />
-      <PopularMovies popular={popularMovies} />
-      <TopRatedMovies topRated={topRatedMovies} />
-      <UpcomingMovies upComing={upcomingMovies} />
-      <Favorites />
-    </div>
+    <BrowserRouter>
+      <FavContext.Provider value={handleFavorites}>
+        <FavIDContext.Provider value={favoriteIds}>
+          <div className="relative max-w-[1440px] mx-auto ">
+            <Routes>
+              <Route path="/" element={<Home favoriteIds={favoriteIds} />} />
+              <Route
+                path="/favorite"
+                element={<Favorites favoriteMovies={favoriteMovies} />}
+              />
+              <Route path="/info" element={<MovieInfo />} />
+              <Route
+                path="/search"
+                element={
+                  <MovieSearch
+                    searchMovieList={searchedMovies}
+                    updateSearchList={setSearchedMovies}
+                  />
+                }
+              />
+            </Routes>
+          </div>
+        </FavIDContext.Provider>
+      </FavContext.Provider>
+    </BrowserRouter>
   );
 }
 

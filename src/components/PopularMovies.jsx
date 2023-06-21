@@ -1,7 +1,7 @@
 import React from "react";
 import MovieList from "./MovieList";
 
-function PopularMovies({ popular }) {
+function PopularMovies({ popular, favoriteIds }) {
   return (
     <div>
       <MovieList movies={popular} genre="Popular" />

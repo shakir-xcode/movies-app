@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 
-function SearchBox() {
-  const [searchString, setSearchString] = useState();
-  const handleChange = (e) => {
-    setSearchString(e.target.value);
-    console.log(e.target.value);
-  };
+function SearchBox({ searchValue, setSearchValue }) {
   return (
     <div
-      className=" flex items-center rounded-2xl px-2 py-1 
-      overflow-hidden border border-slate-200 
+      className=" w-fit flex items-center rounded-2xl px-2 py-1 
+      overflow-hidden border border-slate-600 
       focus-within:border-slate-200 "
     >
       <input
         type="text"
-        value={searchString}
-        onChange={handleChange}
+        value={searchValue}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
         placeholder="search..."
-        className="w-[8ch] text-primary-color bg-transparent focus:outline-0 px-1 "
+        className="w-full text-primary-color bg-transparent focus:outline-0 px-1 "
       />
-      <BsSearch size={16} className="text-white" />
+      <BsSearch size={16} className="text-slate-300" />
     </div>
   );
 }
