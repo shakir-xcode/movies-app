@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import SearchBox from "../components/SearchBox";
 import axios from "axios";
 import MovieCard from "../components/MovieCard";
 import { FavIDContext } from "../App";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { SEARCH_KEY } from "../requests";
 
-const SEARCH_KEY = "MOVIE_APP_SEARCH_STRING";
 function MovieSearch({ searchMovieList, updateSearchList }) {
   const [searchString, setSearchString] = useLocalStorage(SEARCH_KEY, "");
 

@@ -1,5 +1,6 @@
 /* 
-1. change logo
-2. fix prop drilling
+1. change fav icon
+2. store favorites locally
+3. implement redux
 
 */
