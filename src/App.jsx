@@ -5,12 +5,14 @@ import Favorites from "./pages/Favorites";
 import MovieInfo from "./pages/MovieInfo";
 import MovieSearch from "./pages/MovieSearch";
 import { useState } from "react";
+import useLocalStorage from "./hooks/useLocalStorage";
+import { MOVIE_KEY } from "./requests";
 
 export const FavContext = React.createContext();
 export const FavIDContext = React.createContext();
 
 function App() {
-  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useLocalStorage(MOVIE_KEY, []);
   const favoriteIds = favoriteMovies.map((movie) => movie.id);
   const [searchedMovies, setSearchedMovies] = useState([]);
 
@@ -40,7 +42,7 @@ function App() {
         <FavIDContext.Provider value={favoriteIds}>
           <div className="relative max-w-[1440px] mx-auto ">
             <Routes>
-              <Route path="/" element={<Home favoriteIds={favoriteIds} />} />
+              <Route path="/" element={<Home />} />
               <Route
                 path="/favorite"
                 element={<Favorites favoriteMovies={favoriteMovies} />}

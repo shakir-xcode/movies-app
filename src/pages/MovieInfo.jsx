@@ -13,11 +13,15 @@ function MovieInfo() {
   const movie = location.state.movie;
   const isFavorite = favoriteIds.includes(movie.id);
 
+  const imageRes = movie.backdrop_path
+    ? movie.backdrop_path
+    : movie?.poster_path;
+
   return (
     <div className="">
       <div className="relative h-[100svh]">
         <img
-          src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/original${imageRes}`}
           alt={movie?.title}
           className="w-full h-full object-cover"
         />

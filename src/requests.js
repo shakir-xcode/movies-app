@@ -1,7 +1,7 @@
 
 // local storage keys
 export const SEARCH_KEY = "MOVIE_APP_SEARCH_STRING";
-
+export const MOVIE_KEY = "MOVIE_APP_MOVIE_KEY";
 
 
 const key = '1982aef0e1f11c0677b20dc7b708bb87';
