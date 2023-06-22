@@ -46,7 +46,7 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <HeroSection movie={heroSectionMovie} isFavorite={isFavorite} />
       <PopularMovies popular={popularMovies} />
       <TopRatedMovies topRated={topRatedMovies} />

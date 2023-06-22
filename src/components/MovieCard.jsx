@@ -4,7 +4,6 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FavContext } from "../App";
 
 function MovieCard({ movie, liked = false }) {
-  const card = useRef();
   const navigate = useNavigate();
 
   const handleFavoriteClick = useContext(FavContext);
@@ -15,13 +14,16 @@ function MovieCard({ movie, liked = false }) {
       : handleFavoriteClick(movie); //if fav icon is clicked
   };
 
+  const imageRes = movie.backdrop_path
+    ? movie.backdrop_path
+    : movie?.poster_path;
   return (
     <div
       className="relative w-[160px] h-full sm:w-[200px] md:w-[240px] lg:w-[280px] 
     inline-block mx-[0.1em] my-[0.1em] md:mx-[0.25em] md:my-[0.25em] cursor-pointer  "
     >
       <img
-        src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/original${imageRes}`}
         alt={movie?.title}
       />
 
