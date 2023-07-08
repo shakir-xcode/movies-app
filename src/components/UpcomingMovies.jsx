@@ -1,10 +1,12 @@
 import React from "react";
 import MovieList from "./MovieList";
+import { useSelector } from "react-redux";
 
-function UpcomingMovies({ upComing }) {
+function UpcomingMovies() {
+  const upComingList = useSelector((state) => state.movies.upcomingList);
   return (
     <div>
-      <MovieList movies={upComing} genre="Up Coming" />
+      <MovieList movies={upComingList} genre="Up Coming" />
     </div>
   );
 }

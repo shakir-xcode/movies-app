@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MovieCard from "../components/MovieCard";
+import { useSelector } from "react-redux";
 
-function Favorites({ favoriteMovies, handleFavoriteClick }) {
-  const [storedMovies, setStoredMovies] = useState(favoriteMovies);
+function Favorites() {
+  const favoriteMovies = useSelector((state) => state.favorites.list);
 
   return (
     <div>
@@ -10,14 +11,7 @@ function Favorites({ favoriteMovies, handleFavoriteClick }) {
       <div className="flex flex-wrap justify-center mt-12">
         {favoriteMovies.length > 0 ? (
           favoriteMovies.map((movie) => {
-            return (
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-                liked={true}
-                likeIt={handleFavoriteClick}
-              />
-            );
+            return <MovieCard key={movie.id} movie={movie} />;
           })
         ) : (
           <p className="text-2xl md:text-5xl font-bold opacity-50">

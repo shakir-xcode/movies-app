@@ -1,12 +1,20 @@
-import React, { useRef, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { FavContext } from "../App";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../moviesStore/favoriteSlice";
 
-function MovieCard({ movie, liked = false }) {
+function MovieCard({ movie }) {
+  const favoriteMovies = useSelector((state) => state.favorites.idList);
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
-  const handleFavoriteClick = useContext(FavContext);
+  const handleFavoriteClick = (movie) => {
+    favoriteMovies.includes(movie?.id)
+      ? dispatch(removeFavorite(movie?.id))
+      : dispatch(addFavorite(movie));
+  };
 
   const handleClick = (e) => {
     e.target.localName === "p" //if card overlay is clicked
@@ -14,8 +22,8 @@ function MovieCard({ movie, liked = false }) {
       : handleFavoriteClick(movie); //if fav icon is clicked
   };
 
-  const imageRes = movie.backdrop_path
-    ? movie.backdrop_path
+  const imageRes = movie?.backdrop_path
+    ? movie?.backdrop_path
     : movie?.poster_path;
   return (
     <div
@@ -32,10 +40,10 @@ function MovieCard({ movie, liked = false }) {
         className=" absolute bg-black/80 top-0 left-0 bottom-0 right-0 opacity-0 hover:opacity-100 transition"
       >
         <p className="flex flex-col gap-3 justify-center items-center h-full overflow-hidden text-[0.7rem] md:text-[0.9rem] font-bold">
-          {movie.title}
+          {movie?.title}
         </p>
         <p className="absolute top-4 left-4 z-50">
-          {liked ? <FaHeart /> : <FaRegHeart />}
+          {favoriteMovies.includes(movie.id) ? <FaHeart /> : <FaRegHeart />}
         </p>
       </div>
     </div>
