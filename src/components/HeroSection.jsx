@@ -3,8 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { CgInfo } from "react-icons/cg";
 import { MdFavoriteBorder } from "react-icons/md";
 import Navbar from "./Navbar";
+import { useSelector, useDispatch } from "react-redux";
 
-function HeroSection({ movie, isFavorite }) {
+function HeroSection({ isFavorite }) {
+  const popularMovies = useSelector((state) => state.movies.popularList);
+  const movie = popularMovies[Math.floor(Math.random() * popularMovies.length)];
+
   const navigate = useNavigate();
 
   const handleClick = () => {

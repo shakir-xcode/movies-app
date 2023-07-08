@@ -1,17 +1,22 @@
 import React from "react";
-import { useContext } from "react";
 import { FaHeart, FaRegHeart, FaThumbsUp } from "react-icons/fa";
-import { MdFavoriteBorder } from "react-icons/md";
 import { useLocation } from "react-router-dom";
-import { FavContext, FavIDContext } from "../App";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../moviesStore/favoriteSlice";
 
 function MovieInfo() {
   const location = useLocation();
-  const handleFavortieClick = useContext(FavContext);
-  const favoriteIds = useContext(FavIDContext);
+  const dispatch = useDispatch();
+  const favoriteMovies = useSelector((state) => state.favorites.idList);
+
+  const handleFavoriteClick = (movie) => {
+    favoriteMovies.includes(movie?.id)
+      ? dispatch(removeFavorite(movie?.id))
+      : dispatch(addFavorite(movie));
+  };
 
   const movie = location.state.movie;
-  const isFavorite = favoriteIds.includes(movie.id);
+  const isFavorite = favoriteMovies.includes(movie.id);
 
   const imageRes = movie.backdrop_path
     ? movie.backdrop_path
@@ -44,7 +49,7 @@ function MovieInfo() {
               <FaThumbsUp size={24} />
             </p>
             <div className="flex gap-2">
-              <button onClick={() => handleFavortieClick(movie)}>
+              <button onClick={() => handleFavoriteClick(movie)}>
                 {isFavorite ? <FaHeart /> : <FaRegHeart />}
               </button>
 
