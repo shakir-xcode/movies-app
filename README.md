@@ -32,7 +32,7 @@ MoviesHub is an application that can be used to browse and discover movies from 
 
 ## Preview
 
-<h2>Home Page</h2><br>
+<b><ul>Home Page</ul></b><br>
 ![homePage](https://github.com/shakir-xcode/movies-app/assets/125987776/819c60dc-a251-4de3-bbf8-2324c6a0cc63)
 
 <b>Search Results</b>
