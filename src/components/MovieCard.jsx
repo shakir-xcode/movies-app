@@ -33,6 +33,7 @@ function MovieCard({ movie }) {
       <img
         src={`https://image.tmdb.org/t/p/original${imageRes}`}
         alt={movie?.title}
+        loading="lazy"
       />
 
       <div
