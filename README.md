@@ -14,7 +14,7 @@ MoviesHub is an application that can be used to browse and discover movies from 
   <li>Detailed movie information</li>
   <li>Easy to use and intuitive interface</li>
   <li>Utilizes TMDb api</li>
-  <li>State management using Redux<li>
+  <li>State management using Redux</li>
 </ul>
 
 ## Technologies
