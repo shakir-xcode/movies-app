@@ -1,5 +1,5 @@
 const logger = state => next => action => {
-    console.log('Action Type: ', action.type)
+    // console.log('Action Type: ', action.type)
     next(action)
 }
 

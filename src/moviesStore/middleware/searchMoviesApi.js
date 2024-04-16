@@ -1,5 +1,5 @@
 import { beginSearch } from "../appActions"
-import { getSearchUrl } from "../../moviesConfig";
+import request from "../../moviesConfig";
 import axios from "axios";
 
 const searchMoviesApi = ({ dispatch }) => next => action => {
@@ -12,7 +12,7 @@ const searchMoviesApi = ({ dispatch }) => next => action => {
         dispatch({ type: onStart });
 
     axios
-        .get(getSearchUrl(searchQuery))
+        .get(request.requestSearch, { title: searchQuery })
         .then(response => {
 
             dispatch({ type: onSuccess.setSearchString, payload: searchQuery });
