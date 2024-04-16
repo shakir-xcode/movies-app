@@ -87,7 +87,7 @@ export const loadMovies = () => (dispatch, getState) => {
 export const loadSearchedMovies = (searchQuery) => (dispatch, getState) => {
     clearTimeout(timeoutID);
     let id = setTimeout(() => {
-        console.log('here...')
+        // console.log('here...')
         dispatch(beginSearch({
             searchQuery,
             onStart: moviesRequested.type,

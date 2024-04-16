@@ -19,7 +19,7 @@ function MovieInfo() {
   const isFavorite = favoriteMovies.includes(movie.id);
 
   const imageRes = movie.backdrop_path
-    ? movie.backdrop_path
+    ? movie?.backdrop_path
     : movie?.poster_path;
 
   return (
