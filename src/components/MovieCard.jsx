@@ -31,7 +31,7 @@ function MovieCard({ movie }) {
     inline-block mx-[0.1em] my-[0.1em] md:mx-[0.25em] md:my-[0.25em] cursor-pointer  "
     >
       <img
-        src={`https://image.tmdb.org/t/p/original${imageRes}`}
+        src={`https://image.tmdb.org/t/p/w300${imageRes}`}
         alt={movie?.title}
         loading="lazy"
       />
