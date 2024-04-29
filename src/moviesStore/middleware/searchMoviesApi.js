@@ -10,14 +10,10 @@ const searchMoviesApi = ({ dispatch }) => next => action => {
 
     if (onStart)
         dispatch({ type: onStart });
-
-	console.log('searched : ',searchQuery)
 	if (!searchQuery) return;
     axios
         .get(request.requestSearch, {params: { title: searchQuery }})
         .then(response => {
-
-	console.log(response)
             dispatch({ type: onSuccess.setSearchString, payload: searchQuery });
             dispatch({ type: onSuccess.searchedMoviesReceived, payload: sortMovies(response.data.results) });
 
@@ -25,7 +21,7 @@ const searchMoviesApi = ({ dispatch }) => next => action => {
                 dispatch({ type: onEnd })
         })
         .catch(error => {
-            console.log(error.message);
+            console.error(error.message);
             dispatch({ type: 'Error', payload: error.message })
 
             if (onEnd)
