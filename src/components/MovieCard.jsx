@@ -23,12 +23,13 @@ function MovieCard({ movie }) {
   };
 
   const imageRes = movie?.backdrop_path
-    ? movie?.backdrop_path
-    : movie?.poster_path;
+    || movie?.backdrop_path
+    || movie?.poster_path
+    
   return (
     <div
-      className="relative w-[160px] h-full sm:w-[200px] md:w-[240px] lg:w-[280px] 
-    inline-block mx-[0.1em] my-[0.1em] md:mx-[0.25em] md:my-[0.25em] cursor-pointer  "
+      className={`relative w-[160px] ${imageRes ? 'h-full' : 'h-[110px]'} sm:w-[200px] md:w-[240px] lg:w-[280px] 
+    inline-block mx-[0.1em] my-[0.1em] md:mx-[0.25em] md:my-[0.25em] cursor-pointer`}
     >
       <img
         src={`https://image.tmdb.org/t/p/w300${imageRes}`}

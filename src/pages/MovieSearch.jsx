@@ -12,7 +12,6 @@ function MovieSearch() {
 
   useEffect(() => {
     dispatch(loadSearchedMovies(searchString));
-    console.log("here .");
   }, [searchString]);
 
   return (
