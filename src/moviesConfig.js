@@ -9,8 +9,8 @@ export const MOVIE_KEY = "MOVIE_APP_MOVIE_KEY";
 
 
 
-//const baseUrl = 'https://movieshub-backend.onrender.com';
-const baseUrl = "https://movies-hub-backend.vercel.app/";
+const baseUrl = 'https://movieshub-backend.onrender.com';
+//const baseUrl = "https://movies-hub-backend.vercel.app/";
 //const baseUrl = 'http://localhost:8000'
  
 const request = {
